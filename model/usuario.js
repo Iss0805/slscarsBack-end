@@ -24,6 +24,6 @@ const modelUsuarios = connection.define(
   }
 );
 
-modelUsuarios.sync({force:true});
+// modelUsuarios.sync({force:true});
 
 module.exports = modelUsuarios;

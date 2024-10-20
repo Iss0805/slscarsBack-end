@@ -30,7 +30,7 @@ const modelCarros = connection.define(
             allowNull: false
         },
         telefone: {
-            type: Sequelize.STRING(15),  // Corrigido para STRING, pois números de telefone podem conter símbolos como '+'
+            type: Sequelize.STRING(15),  
             allowNull: true
         }
     }
@@ -46,7 +46,6 @@ modelCarros.belongsTo(modelUsuarios,{
     sourcerKey:'id'
 
 })
-
-// modelCarros.sync({ force: true });
+modelCarros.sync({ force: true });
 
 module.exports = modelCarros;

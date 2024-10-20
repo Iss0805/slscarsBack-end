@@ -76,7 +76,7 @@ router.get('/listagemUsuarios', (req, res)=>{
 
 });
 
-router.get('/listagemUsuarios/:cod_livro', (req, res)=>{
+router.get('/listagemUsuarios/:id', (req, res)=>{
 
     let { id } = req.params;
 
@@ -104,3 +104,7 @@ router.get('/listagemUsuarios/:cod_livro', (req, res)=>{
 
 
 });
+
+
+
+module.exports = router;
