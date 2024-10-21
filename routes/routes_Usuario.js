@@ -14,7 +14,7 @@ router.get('/', (req, res)=>{
 
 router.post('/inserirUsuario', (req, res)=>{
 
-    let {  nome_cliente, email,telefone } = req.body;
+    let {  nome_cliente,email,telefone } = req.body;
 
     modelUsuarios.create(
         {
@@ -23,6 +23,8 @@ router.post('/inserirUsuario', (req, res)=>{
             email,
             telefone
         }
+
+        
     )
     .then(
         ()=>{
