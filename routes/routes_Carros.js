@@ -7,16 +7,15 @@ const router = express.Router();
 
 
 router.post('/inserirCarros', (req, res)=>{
-
-    let { placa, modelo,nome_cliente,email,telefone} = req.body;
+    console.log("Dados recebidos:", req.body);
+    let { placa, modelo,cliente_id,email} = req.body;
 
     modelCarros.create(
         {
             placa, 
             modelo,
-            nome_cliente,
-            email,
-            telefone
+            cliente_id,
+            email
         }
     )
     .then(
@@ -98,5 +97,73 @@ router.get('/listagemCarros/:id', (req, res)=>{
 
 });
 
+router.delete('/excluirCarros/:id', (req, res)=>{
+
+    let { id } = req.params;
+
+    modelCarros.destroy(
+        {where:{id}}
+    ).then(
+        ()=>{
+            return res.status(201).json(
+                {
+                    errorStatus:false,
+                    mensageStatus:'CARROS EXCLUIDO COM SUCESSO'
+                }
+            );
+        }
+    )
+    .catch((error)=>{
+        return res.status(400).json(
+            {
+                errorStatus:true,
+                mensageStatus:'HOUVE UM ERRO AO EXCLUIR O CARRO',
+                errorObject:error
+            }
+        );
+    });
+
+    
+
+});
+
+
+router.put('/alterarCarrosCli', (req, res)=>{
+
+    let { placa, modelo,email } = req.body;
+
+    modelCarros.update(
+        {
+            placa,
+            modelo,
+            email,
+            
+
+        },
+        {where:{id}}
+    ).then(
+        ()=>{
+            return res.status(201).json(
+                {
+                    errorStatus:false,
+                    mensageStatus:'CARRO ALTERADO COM SUCESSO'
+                }
+            );
+        }
+    )
+    .catch((error)=>{
+        return res.status(400).json(
+            {
+                errorStatus:true,
+                mensageStatus:'HOUVE UM ERRO AO ALTERAR O CARRO',
+                errorObject:error
+            }
+        );
+    });
+
+
+
+
+});
 
 module.exports = router;

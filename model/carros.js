@@ -14,11 +14,11 @@ const modelCarros = connection.define(
         },
         placa: {
             type: Sequelize.STRING(10),
-            allowNull: true
+            allowNull: false
         },
         modelo: {
             type: Sequelize.STRING(140),
-            allowNull: true
+            allowNull: false
         },
         cliente_id: {  
             type: Sequelize.INTEGER,
@@ -28,6 +28,7 @@ const modelCarros = connection.define(
         email: {
             type: Sequelize.STRING(140),
             allowNull: false
+            
         },
         telefone: {
             type: Sequelize.STRING(15),  
