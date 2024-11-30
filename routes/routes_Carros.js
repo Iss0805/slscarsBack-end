@@ -128,9 +128,9 @@ router.delete('/excluirCarros/:id', (req, res)=>{
 });
 
 
-router.put('/alterarCarrosCli', (req, res)=>{
+router.put('/alterarCarrosCli/', (req, res)=>{
 
-    let { placa, modelo,email } = req.body;
+    let { placa, modelo,email ,id } = req.body;
 
     modelCarros.update(
         {
@@ -140,7 +140,7 @@ router.put('/alterarCarrosCli', (req, res)=>{
             
 
         },
-        {where:{id}}
+         {where:{id}}
     ).then(
         ()=>{
             return res.status(201).json(
